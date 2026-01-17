@@ -67,8 +67,12 @@ export const Events = () => {
                                     </div>
                                 </div>
 
-                                <Button size="lg" className="w-full md:w-auto">
-                                    Register Interest
+                                <Button
+                                    size="lg"
+                                    className="w-full md:w-auto"
+                                    onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSeAd5bWRfA7DhTNm4JFyCixpEjRH-BYC1YJoH6uBG1sabogaw/viewform?usp=publish-editor', '_blank')}
+                                >
+                                    Register
                                 </Button>
                             </div>
 

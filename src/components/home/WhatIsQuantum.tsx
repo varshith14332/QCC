@@ -106,7 +106,7 @@ export default function WhatIsQuantum() {
     };
 
     return (
-        <div className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-24 overflow-hidden">
+        <div className="relative py-24 overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />

@@ -95,7 +95,7 @@ export default function FeaturedHighlights() {
     ];
 
     return (
-        <div className="bg-slate-950 py-20">
+        <div className="py-20">
             <section ref={sectionRef} className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 {/* Background Elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
