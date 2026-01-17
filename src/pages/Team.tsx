@@ -4,12 +4,15 @@ import { TeamCard } from '../components/shared/TeamCard';
 
 export const Team = () => {
     // Separate team members by role
-    const facultyAdvisor = teamMembers.filter(m => m.role.includes('Faculty'));
+    const facultyCoordinators = teamMembers.filter(m => m.role.includes('Faculty'));
     const leadership = teamMembers.filter(m =>
-        m.role.includes('President') || m.role.includes('Vice President')
+        m.role === 'President' || m.role === 'Vice President'
     );
     const leads = teamMembers.filter(m =>
-        m.role.includes('Lead') && !m.role.includes('President')
+        m.role.includes('Lead')
+    );
+    const members = teamMembers.filter(m =>
+        m.role === 'Team Member'
     );
 
     return (
@@ -30,8 +33,8 @@ export const Team = () => {
                     </p>
                 </motion.div>
 
-                {/* Faculty Advisor */}
-                {facultyAdvisor.length > 0 && (
+                {/* Faculty Coordinators */}
+                {facultyCoordinators.length > 0 && (
                     <motion.div
                         className="mb-16"
                         initial={{ opacity: 0, y: 30 }}
@@ -40,11 +43,19 @@ export const Team = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="text-3xl font-bold text-white mb-8 text-center font-display">
-                            Faculty Advisor
+                            Faculty Coordinators
                         </h2>
-                        <div className="max-w-md mx-auto">
-                            {facultyAdvisor.map((member) => (
-                                <TeamCard key={member.id} member={member} />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                            {facultyCoordinators.map((member, index) => (
+                                <motion.div
+                                    key={member.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                >
+                                    <TeamCard member={member} />
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
@@ -62,7 +73,7 @@ export const Team = () => {
                         <h2 className="text-3xl font-bold text-white mb-8 text-center font-display">
                             Leadership Team
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                             {leadership.map((member, index) => (
                                 <motion.div
                                     key={member.id}
@@ -81,6 +92,7 @@ export const Team = () => {
                 {/* Department Leads */}
                 {leads.length > 0 && (
                     <motion.div
+                        className="mb-16"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -89,8 +101,35 @@ export const Team = () => {
                         <h2 className="text-3xl font-bold text-white mb-8 text-center font-display">
                             Department Leads
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                             {leads.map((member, index) => (
+                                <motion.div
+                                    key={member.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                >
+                                    <TeamCard member={member} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+
+                {/* Team Members */}
+                {members.length > 0 && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h2 className="text-3xl font-bold text-white mb-8 text-center font-display">
+                            Team Members
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {members.map((member, index) => (
                                 <motion.div
                                     key={member.id}
                                     initial={{ opacity: 0, y: 20 }}
