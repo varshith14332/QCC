@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { ProjectCard } from '../components/shared/ProjectCard';
+import { Rocket } from 'lucide-react';
 
 export const Projects = () => {
     return (
@@ -22,19 +23,35 @@ export const Projects = () => {
                 </motion.div>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                        >
-                            <ProjectCard project={project} />
-                        </motion.div>
-                    ))}
-                </div>
+                {projects.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {projects.map((project, index) => (
+                            <motion.div
+                                key={project.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                                <ProjectCard project={project} />
+                            </motion.div>
+                        ))}
+                    </div>
+                ) : (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center py-20"
+                    >
+                        <div className="inline-block p-4 rounded-full bg-white/5 mb-4">
+                            <Rocket className="w-8 h-8 text-neon-purple" />
+                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-2 font-display">Projects Coming Soon</h2>
+                        <p className="text-white/60 max-w-md mx-auto">
+                            Our community is building amazing things. Stay tuned for our project showcase!
+                        </p>
+                    </motion.div>
+                )}
 
                 {/* CTA Section */}
                 <motion.div

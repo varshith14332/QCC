@@ -24,19 +24,19 @@ export const Contact = () => {
         {
             icon: Mail,
             title: 'Email',
-            value: 'contact@quantumclub.edu',
-            link: 'mailto:contact@quantumclub.edu',
+            value: 'qccvjit@gmail.com',
+            link: 'mailto:qccvjit@gmail.com',
         },
         {
             icon: Phone,
             title: 'Phone',
-            value: '+1 (555) 123-4567',
-            link: 'tel:+15551234567',
+            value: '+91 9032504904',
+            link: 'tel:+919032504904',
         },
         {
             icon: MapPin,
             title: 'Location',
-            value: 'University Campus, Building A, Room 234',
+            value: 'VJIT University Campus',
             link: null,
         },
     ];

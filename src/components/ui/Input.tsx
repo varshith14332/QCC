@@ -30,15 +30,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     ref={ref}
                     type={type}
                     className={`
-w - full px - 4 py - 3 rounded - lg
-bg - white / 5 backdrop - blur - sm
-            border border - white / 20
-text - white placeholder - white / 40
-focus: outline - none focus: ring - 2 focus: ring - neon - blue focus: border - transparent
-transition - all duration - 300
-            ${error ? 'border-red-500 focus:ring-red-500' : ''}
-            ${className}
-`}
+                        w-full px-4 py-3 rounded-lg
+                        bg-white/5 
+                        border border-white/20
+                        text-white placeholder-white/40
+                        focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-transparent
+                        transition-all duration-300
+                        ${error ? 'border-red-500 focus:ring-red-500' : ''}
+                        ${className}
+                    `}
                     onChange={handleChange}
                     {...props}
                 />
@@ -80,17 +80,17 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 <textarea
                     ref={ref}
                     className={`
-w - full px - 4 py - 3 rounded - lg
-bg - white / 5 backdrop - blur - sm
-            border border - white / 20
-text - white placeholder - white / 40
-focus: outline - none focus: ring - 2 focus: ring - neon - blue focus: border - transparent
-transition - all duration - 300
-resize - vertical
-custom - scrollbar
-            ${error ? 'border-red-500 focus:ring-red-500' : ''}
-            ${className}
-`}
+                        w-full px-4 py-3 rounded-lg
+                        bg-white/5 
+                        border border-white/20
+                        text-white placeholder-white/40
+                        focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-transparent
+                        transition-all duration-300
+                        resize-vertical
+                        custom-scrollbar
+                        ${error ? 'border-red-500 focus:ring-red-500' : ''}
+                        ${className}
+                    `}
                     onChange={handleChange}
                     {...props}
                 />
@@ -126,15 +126,15 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
                 <select
                     ref={ref}
                     className={`
-w - full px - 4 py - 3 rounded - lg
-bg - white / 5 backdrop - blur - sm
-            border border - white / 20
-text - white
-focus: outline - none focus: ring - 2 focus: ring - neon - blue focus: border - transparent
-transition - all duration - 300
-            ${error ? 'border-red-500 focus:ring-red-500' : ''}
-            ${className}
-`}
+                        w-full px-4 py-3 rounded-lg
+                        bg-white/5 
+                        border border-white/20
+                        text-white placeholder-white/40
+                        focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-transparent
+                        transition-all duration-300
+                        ${error ? 'border-red-500 focus:ring-red-500' : ''}
+                        ${className}
+                    `}
                     {...props}
                 >
                     <option value="" className="bg-quantum-dark">Select an option</option>

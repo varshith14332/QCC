@@ -76,20 +76,34 @@ export const JoinClub = () => {
             // Security: Generate CSRF-like token
             const token = generateFormToken();
 
-            // TODO: Send to backend API
-            // For now, simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1500));
-
-            console.log('Form submitted:', {
-                ...sanitizedData,
-                _token: token,
-                timestamp: new Date().toISOString(),
+            // Send to FormSubmit.co
+            const response = await fetch("https://formsubmit.co/ajax/qccvjit@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...sanitizedData,
+                    _subject: "New Quantum Club Application",
+                    _template: "table",
+                    _captcha: "false", // Disable captcha for smoother UX, or remove to enable
+                    _token: token,
+                    timestamp: new Date().toISOString(),
+                })
             });
+
+            if (!response.ok) {
+                throw new Error("Form submission failed");
+            }
+
+            console.log('Form submitted successfully');
 
             // Success
             setIsSubmitted(true);
             formRateLimiter.reset('join-club-form');
         } catch (error) {
+            console.error("Submission error:", error);
             setErrors({
                 submit: 'An error occurred while submitting the form. Please try again.',
             });

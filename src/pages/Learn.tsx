@@ -32,127 +32,149 @@ export const Learn = () => {
                 </motion.div>
 
                 {/* Roadmap Sections */}
-                <div className="space-y-12">
-                    {/* Beginner */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-3 rounded-xl bg-gradient-to-br from-neon-blue to-neon-cyan">
-                                <BookOpen className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold text-white font-display">Beginner Level</h2>
-                                <p className="text-white/60">Start your quantum journey here</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {beginnerTopics.map((topic, index) => (
-                                <motion.div
-                                    key={topic.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <Card className="h-full group cursor-pointer" gradient>
-                                        <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-blue transition-colors">
-                                            {topic.title}
-                                        </h3>
-                                        <p className="text-white/70 mb-4">{topic.description}</p>
-                                        <div className="flex items-center gap-2 text-neon-blue text-sm font-medium">
-                                            <span>Learn More</span>
-                                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                                        </div>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
+                {learningTopics.length > 0 ? (
+                    <div className="space-y-12">
+                        {/* Beginner */}
+                        {beginnerTopics.length > 0 && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="p-3 rounded-xl bg-gradient-to-br from-neon-blue to-neon-cyan">
+                                        <BookOpen className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-3xl font-bold text-white font-display">Beginner Level</h2>
+                                        <p className="text-white/60">Start your quantum journey here</p>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {beginnerTopics.map((topic, index) => (
+                                        <motion.div
+                                            key={topic.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        >
+                                            <Card className="h-full group cursor-pointer" gradient>
+                                                <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-blue transition-colors">
+                                                    {topic.title}
+                                                </h3>
+                                                <p className="text-white/70 mb-4">{topic.description}</p>
+                                                <div className="flex items-center gap-2 text-neon-blue text-sm font-medium">
+                                                    <span>Learn More</span>
+                                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                </div>
+                                            </Card>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
 
-                    {/* Intermediate */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-3 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink">
-                                <Code className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold text-white font-display">Intermediate Level</h2>
-                                <p className="text-white/60">Dive deeper into quantum programming</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {intermediateTopics.map((topic, index) => (
-                                <motion.div
-                                    key={topic.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <Card className="h-full group cursor-pointer" gradient>
-                                        <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-purple transition-colors">
-                                            {topic.title}
-                                        </h3>
-                                        <p className="text-white/70 mb-4">{topic.description}</p>
-                                        <div className="flex items-center gap-2 text-neon-purple text-sm font-medium">
-                                            <span>Learn More</span>
-                                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                                        </div>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
+                        {/* Intermediate */}
+                        {intermediateTopics.length > 0 && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="p-3 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink">
+                                        <Code className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-3xl font-bold text-white font-display">Intermediate Level</h2>
+                                        <p className="text-white/60">Dive deeper into quantum programming</p>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {intermediateTopics.map((topic, index) => (
+                                        <motion.div
+                                            key={topic.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        >
+                                            <Card className="h-full group cursor-pointer" gradient>
+                                                <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-purple transition-colors">
+                                                    {topic.title}
+                                                </h3>
+                                                <p className="text-white/70 mb-4">{topic.description}</p>
+                                                <div className="flex items-center gap-2 text-neon-purple text-sm font-medium">
+                                                    <span>Learn More</span>
+                                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                </div>
+                                            </Card>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
 
-                    {/* Advanced */}
+                        {/* Advanced */}
+                        {advancedTopics.length > 0 && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink to-red-500">
+                                        <Rocket className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-3xl font-bold text-white font-display">Advanced Level</h2>
+                                        <p className="text-white/60">Cutting-edge quantum research topics</p>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {advancedTopics.map((topic, index) => (
+                                        <motion.div
+                                            key={topic.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        >
+                                            <Card className="h-full group cursor-pointer" gradient>
+                                                <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-pink transition-colors">
+                                                    {topic.title}
+                                                </h3>
+                                                <p className="text-white/70 mb-4">{topic.description}</p>
+                                                <div className="flex items-center gap-2 text-neon-pink text-sm font-medium">
+                                                    <span>Learn More</span>
+                                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                </div>
+                                            </Card>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </div>
+                ) : (
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center py-20"
                     >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink to-red-500">
-                                <Rocket className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold text-white font-display">Advanced Level</h2>
-                                <p className="text-white/60">Cutting-edge quantum research topics</p>
-                            </div>
+                        <div className="inline-block p-4 rounded-full bg-white/5 mb-4">
+                            <BookOpen className="w-8 h-8 text-neon-blue" />
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {advancedTopics.map((topic, index) => (
-                                <motion.div
-                                    key={topic.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <Card className="h-full group cursor-pointer" gradient>
-                                        <h3 className="text-xl font-bold text-white mb-3 font-display group-hover:text-neon-pink transition-colors">
-                                            {topic.title}
-                                        </h3>
-                                        <p className="text-white/70 mb-4">{topic.description}</p>
-                                        <div className="flex items-center gap-2 text-neon-pink text-sm font-medium">
-                                            <span>Learn More</span>
-                                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                                        </div>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-2 font-display">Curriculum Under Construction</h2>
+                        <p className="text-white/60 max-w-md mx-auto">
+                            We are currently curating a world-class quantum computing curriculum. Check back soon for updates!
+                        </p>
                     </motion.div>
-                </div>
+                )}
 
                 {/* CTA Section */}
                 <motion.div
