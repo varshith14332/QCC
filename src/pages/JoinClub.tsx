@@ -73,28 +73,26 @@ export const JoinClub = () => {
             // Security: Sanitize form data
             const sanitizedData = sanitizeJoinClubForm(formData);
 
-            // Security: Generate CSRF-like token
-            const token = generateFormToken();
-
-            // Send to FormSubmit.co
-            const response = await fetch("https://formsubmit.co/ajax/qccvjit@gmail.com", {
+            // Send to Backend API
+            const response = await fetch("http://localhost:5000/api/join", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
                 },
                 body: JSON.stringify({
-                    ...sanitizedData,
-                    _subject: "New Quantum Club Application",
-                    _template: "table",
-                    _captcha: "false", // Disable captcha for smoother UX, or remove to enable
-                    _token: token,
-                    timestamp: new Date().toISOString(),
+                    fullName: sanitizedData.name,
+                    email: sanitizedData.email,
+                    studentId: "N/A", // Adding placeholder or update form to include this if needed
+                    department: sanitizedData.department,
+                    year: sanitizedData.year,
+                    interest: sanitizedData.motivation,
+                    skills: sanitizedData.skills
                 })
             });
 
             if (!response.ok) {
-                throw new Error("Form submission failed");
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Form submission failed");
             }
 
             console.log('Form submitted successfully');
@@ -105,7 +103,7 @@ export const JoinClub = () => {
         } catch (error) {
             console.error("Submission error:", error);
             setErrors({
-                submit: 'An error occurred while submitting the form. Please try again.',
+                submit: 'An error occurred while connecting to the backend. Please ensure the server is running.',
             });
         } finally {
             setIsSubmitting(false);
