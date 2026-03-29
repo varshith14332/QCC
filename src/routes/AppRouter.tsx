@@ -8,6 +8,7 @@ import { Events } from '../pages/Events';
 import { Team } from '../pages/Team';
 import { JoinClub } from '../pages/JoinClub';
 import { Contact } from '../pages/Contact';
+import { QuantumIDE } from '../pages/ide/QuantumIDE';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -29,7 +30,6 @@ const AnimatedRoutes = () => {
                 {/* Future routes for scalability */}
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
                 {/* <Route path="/workspace" element={<QuantumWorkspace />} /> */}
-                {/* <Route path="/ide" element={<QuantumIDE />} /> */}
                 {/* <Route path="/login" element={<Login />} /> */}
                 {/* <Route path="/signup" element={<Signup />} /> */}
             </Routes>
@@ -40,9 +40,20 @@ const AnimatedRoutes = () => {
 export const AppRouter = () => {
     return (
         <BrowserRouter>
-            <Layout>
-                <AnimatedRoutes />
-            </Layout>
+            <Routes>
+                {/* External routes without standard layout */}
+                <Route path="/ide" element={<QuantumIDE />} />
+                
+                {/* Standard routes with layout */}
+                <Route
+                    path="*"
+                    element={
+                        <Layout>
+                            <AnimatedRoutes />
+                        </Layout>
+                    }
+                />
+            </Routes>
         </BrowserRouter>
     );
 };

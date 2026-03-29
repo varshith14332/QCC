@@ -25,7 +25,8 @@ export const Navbar = () => {
         { name: 'Projects', path: '/projects' },
         { name: 'Events', path: '/events' },
         { name: 'Team', path: '/team' },
-        { name: 'Join Club', path: '/join' },
+        { name: 'IDE', path: '/ide' },
+
         { name: 'Contact', path: '/contact' },
     ];
 

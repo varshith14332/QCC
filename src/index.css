@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  --bg: #0a0c10; --surface: #0f1117; --elevated: #161b22;
+  --border: #21262d; --accent: #58a6ff; --success: #3fb950;
+  --error: #f85149; --text1: #e6edf3; --text2: #8b949e;
+  --text3: #484f58; --purple: #bc8cff; --hover: #1f2733;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
 
 @theme {
   --color-quantum-dark: #0a0e1a;
