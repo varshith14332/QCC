@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Frontend Application (React/Vite)
+  frontend:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+  # Backend API (Node/Express)
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    volumes:
+      - ./backend/submissions.json:/usr/src/app/submissions.json # Persist data
+    restart: always

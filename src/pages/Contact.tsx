@@ -78,24 +78,31 @@ export const Contact = () => {
         setErrors({});
 
         try {
-            // Security: Sanitize and add token
+            // Security: Sanitize
             const sanitizedData = sanitizeContactForm(formData);
-            const token = generateFormToken();
 
-            // TODO: Send to backend API
-            await new Promise((resolve) => setTimeout(resolve, 1500));
-
-            console.log('Contact form submitted:', {
-                ...sanitizedData,
-                _token: token,
-                timestamp: new Date().toISOString(),
+            // Send to Backend API
+            const response = await fetch("http://localhost:5000/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(sanitizedData)
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Message failed to send");
+            }
+
+            console.log('Contact form submitted successfully');
 
             setIsSubmitted(true);
             formRateLimiter.reset('contact-form');
         } catch (error) {
+            console.error("Submission error:", error);
             setErrors({
-                submit: 'An error occurred. Please try again or email us directly.',
+                submit: 'An error occurred while connecting to the backend. Please ensure the server is running.',
             });
         } finally {
             setIsSubmitting(false);
